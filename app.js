@@ -2,7 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
+const port = process.env.PORT || 3000
 //importing controller
 var SharkController = require('./Controller/sharkController.js');
 
@@ -14,7 +14,7 @@ const app = express();
 app.use(bodyParser.json());
 
 //Listening to port 9000
-app.listen('9000', function () {
+app.listen(port, function () {
     console.log("Server Started at port 9000"); 
 });
 
