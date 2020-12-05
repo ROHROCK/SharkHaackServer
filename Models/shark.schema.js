@@ -1,12 +1,14 @@
+//MongoDB Schema
 const mongoose = require('mongoose');
 
 var SharkSchema = {
-    sharkType: { type: String },
-    glbLink: { type: String },
-    wikilink: { type: String },
-    bodyLength: {type: Number}
+    // _id :  String,
+    sharkType:  String,
+    glbLink:String ,
+    wikilink:  String,
+    bodyLength: Number, 
 } 
 
-var Shark = mongoose.model('shark_data', SharkSchema);
+var Shark = mongoose.model('shark', SharkSchema);
 
 module.exports = { Shark };
