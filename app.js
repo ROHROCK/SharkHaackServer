@@ -2,12 +2,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const port = process.env.PORT || 3000
 require('dotenv').config();
-
-var AWS = require('aws-sdk');
-var s3 = new AWS.S3({accessKeyId:process.env.ACCESS_KEY_ID, secretAccessKey:process.env.SECRET_ACCESS_KEY});
-var tempLink = getTempLink(s3,'image/jpeg');
 
 //importing controller
 var SharkController = require('./Controller/sharkController.js');
@@ -18,9 +15,9 @@ const uri = process.env.URI;
 const app = express();
 
 app.use(bodyParser.json());
-
+app.use(cors({ origin: 'http://localhost:3001' }));
 //Listening to port 9000
-app.listen(port, function () {
+app.listen('9000', function () {
     console.log("Server Started at port 9000"); 
 });
 
