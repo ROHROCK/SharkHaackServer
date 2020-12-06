@@ -17,7 +17,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 //Listening to port 9000
-app.listen(port, function () {
+app.listen('9000', function () {
     console.log("Server Started at port 9000"); 
 });
 
@@ -33,15 +33,15 @@ app.use('/shark', SharkController)
 
 
 // get the temp url link to access the s3 object
-function getTempLink(s3,contentType){
-    var params = {Bucket: 'sharkhack', Key: 'Megalodon.glb'};
-    s3.getSignedUrl('putObject', params, function (err, url) {
-        if(err){
-            console.log("Something went wrong while fetching the URL");
-            console.log(err.stack);
-            return "ERR";
-        }
-        console.log('Your generated pre-signed URL is', url);
-        return url
-    });
-}
+// function getTempLink(s3,contentType){
+//     var params = {Bucket: 'sharkhack', Key: 'Megalodon.glb'};
+//     s3.getSignedUrl('putObject', params, function (err, url) {
+//         if(err){
+//             console.log("Something went wrong while fetching the URL");
+//             console.log(err.stack);
+//             return "ERR";
+//         }
+//         console.log('Your generated pre-signed URL is', url);
+//         return url
+//     });
+// }
