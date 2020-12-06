@@ -7,6 +7,8 @@ var SharkSchema = {
     glbLink:String ,
     wikilink:  String,
     bodyLength: Number, 
+    description: String,
+    imageURL: String
 } 
 
 var Shark = mongoose.model('shark', SharkSchema);

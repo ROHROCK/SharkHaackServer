@@ -9,7 +9,7 @@ var { Shark } = require('../Models/shark.schema');
 router.get('/', (req, res) => {
     Shark.find((err, docs) => {
         console.log("shark finding");
-        if (!err) { res.send(docs);}
+        if (!err) { res.send(docs);   }
         else { console.log('Error in Retriving Employees :' + err); }
     });
 });
