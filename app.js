@@ -3,13 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // const cors = require('cors');
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 require('dotenv').config();
-
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", '*');
-    next();
-});
 
 //importing controller
 var SharkController = require('./Controller/sharkController.js');
@@ -19,13 +14,18 @@ const uri = process.env.URI;
 
 const app = express();
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", '*');
+    next();
+});
+
 app.use(bodyParser.json());
 // app.use(cors());
 
 //Listening to port 9000
 app.listen(port, function () {
     console.log(port);
-    console.log("Server Started at port 9000"); 
+    console.log("Server Started at port ",port); 
 });
 
 //MongoDB Connection
