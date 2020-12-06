@@ -37,7 +37,9 @@ app.use(function (req, res, next) {
 });
 
 //Listening to port 9000
-app.listen('9000', function () {
+app.listen(port, function () {
+
+console.log(port);
     console.log("Server Started at port 9000"); 
 });
 
