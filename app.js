@@ -17,7 +17,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors({ origin: 'http://localhost:3000' }));
 //Listening to port 9000
-app.listen('9000', function () {
+app.listen(port, function () {
     console.log("Server Started at port 9000"); 
 });
 
