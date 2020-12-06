@@ -15,7 +15,7 @@ const uri = process.env.URI;
 const app = express();
 
 app.use(bodyParser.json());
-// app.use(cors({ origin: '*' }));
+app.use(cors());
 //Listening to port 9000
 app.listen(port, function () {
     console.log("Server Started at port 9000"); 
