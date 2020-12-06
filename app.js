@@ -3,11 +3,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000
+require('dotenv').config();
+
+var AWS = require('aws-sdk');
+var s3 = new AWS.S3({accessKeyId:process.env.ACCESS_KEY_ID, secretAccessKey:process.env.SECRET_ACCESS_KEY});
+var tempLink = getTempLink(s3,'image/jpeg');
+
 //importing controller
 var SharkController = require('./Controller/sharkController.js');
 
 //MongoDB URL
-const uri = "mongodb+srv://sharkhack:root@sharkhackcluster.rdu0d.mongodb.net/sharkhackdb?retryWrites=true&w=majority";
+const uri = process.env.URI;
 
 const app = express();
 
@@ -27,3 +33,18 @@ mongoose.connect(uri, {useUnifiedTopology:true,useNewUrlParser:true },(err) => {
 });
 
 app.use('/shark', SharkController)
+
+
+// get the temp url link to access the s3 object
+function getTempLink(s3,contentType){
+    var params = {Bucket: 'sharkhack', Key: 'Megalodon.glb'};
+    s3.getSignedUrl('putObject', params, function (err, url) {
+        if(err){
+            console.log("Something went wrong while fetching the URL");
+            console.log(err.stack);
+            return "ERR";
+        }
+        console.log('Your generated pre-signed URL is', url);
+        return url
+    });
+}
