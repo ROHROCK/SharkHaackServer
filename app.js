@@ -10,7 +10,7 @@ require('dotenv').config();
 var SharkController = require('./Controller/sharkController.js');
 
 //MongoDB URL
-const uri = process.env.URI;
+const uri = "mongodb+srv://sharkhack:root@sharkhackcluster.rdu0d.mongodb.net/sharkhackdb?retryWrites=true&w=majority";
 
 const app = express();
 
