@@ -2,7 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+// const cors = require('cors');
 const port = process.env.PORT || 3000
 require('dotenv').config();
 
@@ -15,15 +15,15 @@ const uri = process.env.URI;
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors({origin:'https://shark-vr.herokuapp.com/'}));
+// app.use(cors({origin:'https://shark-vr.herokuapp.com/'}));
 
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", '*');
-//     res.header("Access-Control-Allow-Credentials", true);
-//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-//     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-//     next();
-// });
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", '*');
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+    next();
+});
 
 //Listening to port 9000
 app.listen(port, function () {
